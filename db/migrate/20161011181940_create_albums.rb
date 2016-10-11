@@ -1,7 +1,7 @@
 class CreateAlbums < ActiveRecord::Migration
   def change
     create_table :albums do |t|
-      t.belongs :media, index: true
+      t.belongs_to :media, index: true
       t.string :name
       t.string :artist
       t.string :description
