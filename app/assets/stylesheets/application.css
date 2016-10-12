@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+
+
+header.set-header {
+	height: 10%;
+	display:flex;
+	justify-content: space-between;
+	/*flex-wrap: nowrap;*/
+
+}
+
+.set-header a {
+	/*border: solid black;*/
+	text-decoration: none;
+	width: 25%;
+}
+
+header.set-header div {
+	width: 50%;
+	display: inline-block;
+	margin: auto;
+	/*border: solid black;*/
+}
+
+.set-header img {
+	width: 100%;
+	vertical-align: middle;
+}
+
+.set-header h1 {
+	font-size: 4vw;
+	color: green;
+	/*float: right;*/
+}
+
