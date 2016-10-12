@@ -1,10 +1,20 @@
 <h1>Media!</h1>
 
-	<% @mediums.each do |medium| %>
+	<% @media.each do |medium| %>
 	<article>
 		<p>Ranking: <%= medium.votes.count %> </p>
-		<p>Name: <%= link_to(medium.name, show_media_path(medium.id)) %></p>
-		<p>Artist: <%=medium.artist %></p>
+		<p>Title: <%= link_to(medium.title, show_media_path(medium.id)) %></p>
+		
+		<% if medium.kind == 'album' %>
+			<p>Artist: <%=medium.maker %></p>
+		<% elsif %>
+			<% medium.kind == 'book' %>
+			<p>Author: <%=medium.maker %></p>
+		<%else %>
+			<% medium.kind == 'movie' %>
+			<p>Director: <%=medium.maker %></p>
+		<%end%>
+		
 		<p>Description: <%= medium.description %></p>
 
 		<p><%= button_to("Upvote", upvote_media_path(medium.id)) %></p>
