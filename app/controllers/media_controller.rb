@@ -1,5 +1,4 @@
 class MediaController < ApplicationController
-class MediaController < ApplicationController
 
   
   def find_medium
