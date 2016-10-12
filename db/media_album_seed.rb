@@ -1,4 +1,4 @@
-module AlbumInfo
+module MediaAlbumInfo
 	ALBUMS = 
 	['album', 'Happy-making fermented oysters', 'Sascha Tristin Amal', "If you spend all of your time arguing with people who are nuts, you'll be exhausted and the nuts will still be nuts."],
 	['album', 'Crisp, stewed walrus hearts', 'Justice Roshan Kalani', "If you have any trouble sounding condescending, find a Unix user to show you how it's done."],

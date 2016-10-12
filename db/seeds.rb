@@ -5,17 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require_relative './album_info_seed.rb'
-AlbumInfo::ALBUMS.each do |type, name, artist, description|
-	Album.create(type: type, name: name, artist: artist, description: description )
+require_relative './media_album_seed.rb'
+MediaAlbumInfo::ALBUMS.each do |kind, title, maker, description|
+	Medium.create(kind: kind, title: title, maker: maker, description: description )
 end
 
-require_relative './book_info_seed.rb'
-BookInfo::BOOKS.each do |type, name, author, description|
-	Book.create(type: type, name: name, author: author, description: description )
+require_relative './media_book_seed.rb'
+MediaBookInfo::BOOKS.each do |kind, title, maker, description|
+	Medium.create(kind: kind, title: title, maker: maker, description: description )
 end
 
-require_relative './movie_info_seed.rb'
-MovieInfo::MOVIES.each do |type, name, director, description|
-	Movie.create(type: type, name: name, director: director, description: description )
+require_relative './media_movie_seed.rb'
+MediaMovieInfo::MOVIES.each do |kind, title, maker, description|
+	Medium.create(kind: kind, title: title, maker: maker, description: description )
 end
