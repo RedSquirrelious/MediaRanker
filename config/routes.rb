@@ -1,4 +1,22 @@
 Rails.application.routes.draw do
+  get 'media/index'
+
+  get 'media/show'
+
+  get 'media/new'
+
+  get 'media/create'
+
+  get 'media/edit'
+
+  get 'media/update'
+
+  get 'media/destroy'
+
+  get 'media/upvote'
+
+  get 'media/downvote'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
