@@ -2,13 +2,13 @@ Rails.application.routes.draw do
 
   root to: 'media#index'
 
-  get 'media/index' => 'media#index', as: 'index_media'
+  get 'media/index' => 'media#index', as: 'index_medium'
 
   get 'media/show' => 'media#show', as: 'show_media'
 
-  get 'media/new' => 'media#new', as: 'new_media'
+  get 'media/new' => 'media#new', as: 'new_medium'
 
-  post 'media/create' => 'media#create', as: 'create_media'
+  post 'media/create' => 'media#create', as: 'create_medium'
 
   get 'media/edit' => 'media#edit', as: 'edit_media'
 
