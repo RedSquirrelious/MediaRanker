@@ -18,12 +18,12 @@ class MediaController < ApplicationController
 
   def create
     @params = params
-    @my_medium.name = params[:medium][:name]
-    @my_medium.artist = params[:medium][:artist]
+    @my_medium = Medium.new
+    @my_medium.title = params[:medium][:title]
+    @my_medium.maker = params[:medium][:maker]
     @my_medium.description = params[:description]
-    @my_medium.ranking = 0
     if @my_medium.save
-      redirect_to index_media_path
+      redirect_to index_medium_path
     else
       @error = "Did not save successfully. Try again. \nAll fields must be filled and address must be unique!"
       @post_method = :post
@@ -51,13 +51,13 @@ class MediaController < ApplicationController
             :status => :not_found
     end  
 
-    @my_medium.name = params[:medium][:name]
-    @my_medium.artist = params[:medium][:artist]
+    @my_medium.title = params[:medium][:title]
+    @my_medium.maker = params[:medium][:maker]
     @my_medium.description = params[:medium][:description]
     @my_medium.ranking = params[:medium][:ranking] 
 
     if @my_medium.save
-      redirect_to index_media_path
+      redirect_to index_medium_path
     else
       @error = "Did not save successfully. Try again. \nAll fields must be filled and address must be unique!"
       @post_method = :put
@@ -70,21 +70,21 @@ class MediaController < ApplicationController
     @my_medium = find_medium
     if @my_medium != nil
       @my_medium.destroy
-      redirect_to index_media_path
+      redirect_to index_medium_path
     end    
   end
 
   def upvote
     @my_medium = find_medium
     @my_medium.votes.create
-    redirect_to(index_media_path)
+    redirect_to(index_medium_path)
   end
 
   def downvote
     @my_medium = find_medium
     @my_medium.votes.first.destroy
     @my_medium.ranking = @my_medium.votes.count
-    redirect_to(index_media_path)
+    redirect_to(index_medium_path)
   end
 end
 
