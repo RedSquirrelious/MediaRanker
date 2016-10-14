@@ -47,3 +47,22 @@ header.set-header div {
 	/*float: right;*/
 }
 
+.albums {
+
+}
+
+.card {
+  margin: 1%;
+  padding: 1%;
+  /*background-color: #119fc2;*/
+  /*color: white;*/
+  border: solid black;
+}
+
+ul {
+	list-style: none;
+}
+
+.column li {
+	/*margin: 2px;*/
+}
