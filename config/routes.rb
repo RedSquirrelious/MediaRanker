@@ -2,13 +2,13 @@ Rails.application.routes.draw do
 
   root to: 'media#index'
 
-  get 'media/index' => 'media#index', as: 'index_medium'
+  get 'media/index' => 'media#index', as: 'index_media'
 
   get 'media/show' => 'media#show', as: 'show_media'
 
-  get 'media/new' => 'media#new', as: 'new_medium'
+  get 'media/new' => 'media#new', as: 'new_media'
 
-  post 'media/create' => 'media#create', as: 'create_medium'
+  post 'media/create' => 'media#create', as: 'create_media'
 
   get 'media/edit' => 'media#edit', as: 'edit_media'
 
@@ -16,9 +16,10 @@ Rails.application.routes.draw do
 
   delete 'media/delete' => 'media#destroy', as: 'delete_media'
 
-  post 'media/downvote' => 'media#downvote', as: 'downvote_media'
+  delete 'media/downvote' => 'media#downvote', as: 'downvote_media'
 
   post 'media/upvote' => 'media#upvote', as: 'upvote_media'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
