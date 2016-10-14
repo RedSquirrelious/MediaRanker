@@ -4,21 +4,27 @@ Rails.application.routes.draw do
 
   get 'media/index' => 'media#index', as: 'index_media'
 
-  get 'media/show' => 'media#show', as: 'show_media'
+  get 'media/show/:id' => 'media#show', as: 'show_media'
 
-  get 'media/new' => 'media#new', as: 'new_media'
+  get 'albums' => 'media#show_albums', as: 'albums'
+
+  get 'books' => 'media#show_books', as: 'books'
+
+  get 'movies' => 'media#show_movies', as: 'movies'
+
+  get 'media/new' => 'media#new', as: 'media_new'
 
   post 'media/create' => 'media#create', as: 'create_media'
 
-  get 'media/edit' => 'media#edit', as: 'edit_media'
+  get 'media/:id/edit/' => 'media#edit', as: 'edit_media'
 
-  put 'media/update' => 'media#update', as: 'update_media'
+  put 'media/:id/update' => 'media#update', as: 'update_media'
 
-  delete 'media/delete' => 'media#destroy', as: 'delete_media'
+  delete 'media/:id/delete' => 'media#destroy', as: 'delete_media'
 
-  delete 'media/downvote' => 'media#downvote', as: 'downvote_media'
+  delete 'media/:id/downvote' => 'media#downvote', as: 'downvote_media'
 
-  post 'media/upvote' => 'media#upvote', as: 'upvote_media'
+  post 'media/:id/upvote' => 'media#upvote', as: 'upvote_media'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
