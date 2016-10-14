@@ -7,7 +7,7 @@ class MediaControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
-    get :show, {id: 2}
+    get :show, {id: media(:flood).id}
     assert_response :success
   end
 
@@ -17,50 +17,52 @@ class MediaControllerTest < ActionController::TestCase
   end
 
   test "should be able to create new album" do
-   post_params = {medium: {maker: 'Bobby Socks', title: 'Why Not?', type: 'album', description: 'So tired'}}
+   post_params = {medium: {maker: 'Bobbie Socks', title: 'Why Not?', kind: 'album', description: 'So tired'}}
     post :create, post_params
     assert_response :success
   end
 
   test "should be able to edit a book" do
-    get :edit, {id:1}
+    get :edit, {id: media(:flood).id}
     assert_response :success
   end
 
   test "should be able to update a book" do
-    put :update, {id: 1}
+    put :update, { id: media(:flowers_in_the_attic).id}
     assert_response :success
   end
 
   test "should be able to destroy a movie" do
     assert_difference("Medium.count", -1) do
-    delete :destroy, {id: media(:harold_and_maude).id} 
-    assert_response :redirect
+      delete :destroy, {id: media(:harold_and_maude).id} 
+      assert_response :redirect
     end
   end
 
-  # test "should get upvote" do
-  #   post :upvote
-  #   assert_response :success
-  # end
-
-  # test "should get downvote" do
-  #   post :downvote
-  #   assert_response :success
-  # end
-
 #custom methods
 
-  test 'Find Medium Method Must Bring up Right Object' do
-    post_params = {medium: {maker: 'Bobby Socks', title: 'Why Not?', type: 'album', description: 'So tired'}}
+  test "Upvote method Must Add Votes" do
+    assert_difference("Vote.count", 1) do
+      post :upvote, {id: media(:harold_and_maude).id}
+      assert_response :redirect
+    end
   end
 
   test 'Upvote Method Must Add Votes' do
-    
+    test_case = media(:flowers_in_the_attic)
+    test_case.votes.create
+    assert_equal( test_case.votes.count, 1)
   end
 
   test 'Downvote Method Must Destroy Votes' do
-    
+    test_case = Medium.create(maker: 'Bobbi Sox', title: 'Why Not?', kind: 'album', description: 'So tired')
+      test_case.votes.create
+
+    assert_difference("Vote.count", -1) do
+      get :downvote, {id: test_case.id}
+      assert_response :redirect
+    end
+
   end
 
 end
