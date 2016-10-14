@@ -1,0 +1,21 @@
+<h1>Books!</h1>
+
+	<% @books.each do |book| %>
+	<article>
+		<p>Ranking: <%= book.votes.count %> </p>
+		<p>Title: <%= link_to(book.title, show_media_path(book.id)) %></p>
+
+		<p>Author: <%=book.maker %></p>
+		<p>Description: <%= book.description %></p>
+
+		<p><%= button_to("Upvote", upvote_media_path(book.id)) %></p>
+		<p><%= button_to("Downvote", downvote_media_path(book.id)) %></p>
+<!-- edit button -->
+		<p><%= button_to("Edit Book", edit_media_path(book.id), method: :get, action: :edit) %></p>	
+
+<!-- delete buttons -->	
+		<p><%= button_to("Delete Book", delete_media_path(book.id), data: {confirm: "Are you sure you want to destroy this beautiful writing?"}) %></p>
+
+
+	</article>
+	<% end %>
