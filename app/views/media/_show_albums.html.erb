@@ -1,0 +1,25 @@
+<!-- code for it is     show_albums
+    @albums = @albums.sort_by { |medium| medium.votes.size }.reverse
+
+ -->
+<h1>Albums!</h1>
+
+	<% @albums.each do |album| %>
+	<article>
+		<p>Ranking: <%= album.votes.count %> </p>
+		<p>Title: <%= link_to(album.title, show_media_path(album.id)) %></p>
+
+		<p>Artist: <%=album.maker %></p>
+		<p>Description: <%= album.description %></p>
+
+		<p><%= button_to("Upvote", upvote_media_path(album.id)) %></p>
+		<p><%= button_to("Downvote", downvote_media_path(album.id)) %></p>
+<!-- edit button -->
+		<p><%= button_to("Edit Album", edit_media_path(album.id), method: :get, action: :edit) %></p>	
+
+<!-- delete buttons -->	
+		<p><%= button_to("Delete Album", delete_media_path(album.id), data: {confirm: "Are you sure you want to destroy this beautiful music?"}) %></p>
+
+
+	</article>
+	<% end %>
