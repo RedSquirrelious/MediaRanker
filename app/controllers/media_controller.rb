@@ -50,6 +50,19 @@ class MediaController < ApplicationController
     end  
   end
 
+  def show_albums
+    @albums = Medium.where(kind: 'album').sort_by { |medium| medium.votes.size }.reverse
+  end
+
+  def show_books
+    @books = Medium.where(kind: 'book').sort_by { |medium| medium.votes.size }.reverse
+  end
+
+  def show_movies
+    @movies = Medium.where(kind: 'movie').sort_by { |medium| medium.votes.size }.reverse
+  end
+
+
   def edit
     @my_medium = Medium.find(params[:id])
     @post_method = :put
