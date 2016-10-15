@@ -14,49 +14,38 @@
  *= require_self
  */
 
-
 header.set-header {
-	height: 10%;
-	display:flex;
-	justify-content: space-between;
-	/*flex-wrap: nowrap;*/
-
+	background: #F0AB19;
+	border-bottom: solid black;
 }
 
-.set-header a {
-	/*border: solid black;*/
-	text-decoration: none;
-	width: 25%;
-}
-
-header.set-header div {
-	width: 50%;
-	display: inline-block;
-	margin: auto;
-	/*border: solid black;*/
-}
-
-.set-header img {
-	width: 100%;
+img.set-header  {
+	width: 55%;
 	vertical-align: middle;
+	/*margin-left: 0;*/
 }
 
-.set-header h1 {
-	font-size: 4vw;
-	color: green;
-	/*float: right;*/
+h1.set-header {
+	font-size: 2rem;
+	font-family: verdana;
 }
 
 .albums {
 
 }
 
+h1 {
+	color: black;
+}
+
 .card {
+  display: block;
   margin: 1%;
-  padding: 1%;
+  padding: 2%;
   /*background-color: #119fc2;*/
   /*color: white;*/
   border: solid black;
+  height: 13em;
 }
 
 ul {
@@ -65,4 +54,13 @@ ul {
 
 .column li {
 	/*margin: 2px;*/
+}
+
+span.buttons img {
+	height: 3em;
+
+}
+
+.buttons img:nth-child(2) {
+	height: 1em;
 }
