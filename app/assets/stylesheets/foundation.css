@@ -1261,7 +1261,8 @@ h6 {
     font-size: 1rem; } }
 
 a {
-  color: #2199e8;
+  color: black;
+  font-weight: bolder;
   text-decoration: none;
   line-height: inherit;
   cursor: pointer; }
