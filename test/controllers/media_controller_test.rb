@@ -48,7 +48,7 @@ class MediaControllerTest < ActionController::TestCase
     end
   end
 
-  test 'Upvote Method Must Add Votes' do
+  test 'Upvote Method Must Add Votes to Specific Medium' do
     test_case = media(:flowers_in_the_attic)
     test_case.votes.create
     assert_equal( test_case.votes.count, 1)
