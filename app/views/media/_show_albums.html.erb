@@ -1,34 +1,44 @@
 <span class="column">
 
-
 	<div class="row">
 		<header class="column">
-		<h1>Albums!</h1>
+			<a href="/albums"><h1>Albums!</h1></a>
 		</header>
+
 		<% @albums.each do |album| %>
 
 			<article class="column">
 				<div class="card">
 <!-- item info -->
-					<p>Ranking: <%= album.votes.count %> </p>
-					<p><%= link_to(album.title, show_media_path(album.id)) %></p>
-					<p>By: <%=album.maker %></p>
-					<!-- <p>Description: <%= album.description %></p> -->
+					<ul>
+						<li>
+							Rank: <%= album.votes.count %> 
+						</li>
+						<li>
+							<%= link_to(album.title, show_path(album.id)) %>
+							
+						</li>
+						<li>
+							By: <%=album.maker %>
+						</li>
+						<!-- <li>Description: <%= album.description %>
+						</li> -->
 <!-- voting buttons				 -->
-					<ul class="row small-up-1 medium-up-2">
+					</ul>
+					<ul class="row small-up-1 medium-up-2 large-up-6">
 						<li class="column">
-							<%= button_to("Upvote", upvote_media_path(album.id)) %>
+							<%= button_to("Upvote", upvote_path(album.id)) %>
 						</li>
 						<li class="column">
-							<%= button_to("Downvote", downvote_media_path(album.id)) %>
+							<%= button_to("Downvote", downvote_path(album.id)) %>
 						</li>
 <!-- edit button -->
 						<li class="column">
-							<%= button_to("Edit", edit_media_path(album.id), method: :get, action: :edit) %>
+							<%= button_to("Edit", edit_path(album.id), method: :get, action: :edit) %>
 						</li>	
 <!-- delete buttons -->	
 						<li class="column">
-							<%= button_to("Delete", delete_media_path(album.id), data: {confirm: "Are you sure you want to destroy this beautiful music?"}) %>
+							<%= button_to("Delete", delete_path(album.id), data: {confirm: "Are you sure you want to destroy this beautiful music?"}) %>
 						</li>
 					</ul>
 				</div>
