@@ -12,9 +12,10 @@ Rails.application.routes.draw do
 
   get 'movies' => 'media#show_movies', as: 'movies'
 
-  get 'media/new' => 'media#new'
 
-  post 'media/create' => 'media#create'
+  get 'media/new' => 'media#new', as: 'new'
+
+  post 'media/create' => 'media#create', as: 'create'
 
   get 'media/:id/edit/' => 'media#edit', as: 'edit'
 
