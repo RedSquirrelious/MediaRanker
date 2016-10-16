@@ -1,6 +1,8 @@
-<%= form_for @my_medium, 
-method: @post_method, 
-url: @post_path do |f| %>
+<%= @error if @error %>
+<%= form_for @my_medium, method: @post_method, url: @post_path  do |f| %>
+
+	<%= f.hidden_field :kind, value: params[:kind] %>
+
 	<%= f.label :title %>
 	<%= f.text_field :title %>
 
@@ -10,5 +12,5 @@ url: @post_path do |f| %>
 	<%= f.label :description %>
 	<%= f.text_area :description %>
 
-	<%= f.submit "Submit"%>
+	<%= f.submit "Add New Art" %>
 <% end %>
