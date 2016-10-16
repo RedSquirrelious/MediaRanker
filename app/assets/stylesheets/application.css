@@ -88,3 +88,7 @@ div.buttons img {
 .buttons img:nth-child(2) {
 	max-height: 1rem;
 }
+
+.add-buttons img {
+	max-height: 4rem;
+}
