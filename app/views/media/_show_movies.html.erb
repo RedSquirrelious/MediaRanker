@@ -1,33 +1,43 @@
-<span class="column">
-	<h1>Movies!</h1>
+<div class="column">
+	<a href="/movies"><h1>Movies!</h1></a>
 	<div class="row">		
 		<% @movies.each do |movie| %>
 			<article class="column">
 				<div class="card">
-					<p>Ranking: <%= movie.votes.count %> </p>
-					<p><%= link_to(movie.title, show_media_path(movie.id)) %></p>
-					<p>By: <%=movie.maker %></p>
-<!-- <p>Description: <%= movie.description %></p> -->
+					<div class="media-info">
+						<ul>
+							<li>Rank: <%= movie.votes.count %> </li>
+							<li><%= link_to(movie.title, show_path(movie.id)) %></li>
+							<li>By: <%=movie.maker %></li>
+		<!-- <li>Description: <%= movie.description %></li> -->
+						</ul>
+					</div>
+					<br class="clear-card">
 <!-- voting buttons				 -->
-					<ul class="row small-up-1 medium-up-2">
-						<li class="column">
-							<%= button_to("Upvote", upvote_media_path(movie.id)) %>
-						</li>
-						<li class="column">
-							<%= button_to("Downvote", downvote_media_path(movie.id)) %>
-						</li>
-						<!-- edit button -->
-						<li class="column">
-							<%= button_to("Edit", edit_media_path(movie.id), method: :get, action: :edit) %>
-						</li>	
-						<!-- delete buttons -->	
-						<li class="column">
-							<%= button_to("Delete", delete_media_path(movie.id), data: {confirm: "Are you sure you want to destroy this beautiful music?"}) %>
-						</li>
-					</ul>
+					<div class="buttons">
+						<ul class="row small-up-2 medium-up-4">
+							<li class="column">
+								<%= link_to(image_tag("/assets/upvote_cupid_dart_heart.png"), image_path(upvote_path(movie.id)), action: :upvote, method: :post) %>
+							</li>
+							<!-- edit button -->
+							<li class="column">
+								<%= link_to(image_tag("/assets/edit_pencil.png"), image_path(edit_path(movie.id)), method: :get, action: :edit) %>
+							</li>	
+							<!-- delete buttons -->	
+							<li class="column">
+								<%= link_to(image_tag("/assets/delete_recycle.png"), image_path(delete_path(movie.id)), method: :delete, action: :destroy, data: {confirm: "Are you sure you want to destroy this beautiful example of cinematography?"}) %>
+							</li>
+							<li class="column">
+								<%= link_to(image_tag("/assets/downvote_broken_heart.png"), image_path(downvote_path(movie.id)), method: :post, action: :downvote) %>
+							</li>
+						</ul>
+					</div>
+					<br class="clear-card">
 				</div>
 			</article>
 		<% end %>
 	</div>
-	<%= button_to("New Movie", media_new_path, action: :get) %>
-</span>
+	<div class="add-buttons">
+	<%= link_to(image_tag("/assets/add_movie.png"), image_path(new_path(kind: 'movie')), action: :new, method: :get) %>
+	</div>
+</div>

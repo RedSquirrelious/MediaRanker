@@ -1,39 +1,57 @@
-<span class="column">
-
+<div class="column">
 
 	<div class="row">
 		<header class="column">
-		<h1>Albums!</h1>
+			<a href="/albums"><h1>Albums!</h1></a>
 		</header>
+
 		<% @albums.each do |album| %>
 
 			<article class="column">
 				<div class="card">
+					<div class="media-info"
 <!-- item info -->
-					<p>Ranking: <%= album.votes.count %> </p>
-					<p><%= link_to(album.title, show_media_path(album.id)) %></p>
-					<p>By: <%=album.maker %></p>
-					<!-- <p>Description: <%= album.description %></p> -->
-<!-- voting buttons				 -->
-					<ul class="row small-up-1 medium-up-2">
-						<li class="column">
-							<%= button_to("Upvote", upvote_media_path(album.id)) %>
-						</li>
-						<li class="column">
-							<%= button_to("Downvote", downvote_media_path(album.id)) %>
-						</li>
-<!-- edit button -->
-						<li class="column">
-							<%= button_to("Edit", edit_media_path(album.id), method: :get, action: :edit) %>
-						</li>	
-<!-- delete buttons -->	
-						<li class="column">
-							<%= button_to("Delete", delete_media_path(album.id), data: {confirm: "Are you sure you want to destroy this beautiful music?"}) %>
-						</li>
-					</ul>
+						<ul>
+							<li>
+								Rank: <%= album.votes.count %> 
+							</li>
+							<li>
+								<%= link_to(album.title, show_path(album.id)) %>
+								
+							</li>
+							<li>
+								By: <%=album.maker %>
+							</li>
+							<!-- <li>Description: <%= album.description %>
+							</li> -->
+	<!-- voting buttons				 -->
+						</ul>
+					</div>
+					<br class="clear-card">
+					<div class="buttons">
+						<ul class="row small-up-2 medium-up-4">
+							<li class="column">
+								<%= link_to(image_tag("/assets/upvote_cupid_dart_heart.png"), image_path(upvote_path(album.id)), action: :upvote, method: :post) %>
+							</li>
+							<!-- edit button -->
+							<li class="column">
+								<%= link_to(image_tag("/assets/edit_pencil.png"), image_path(edit_path(album.id)), method: :get, action: :edit) %>
+							</li>
+							<!-- delete buttons -->	
+							<li class="column">
+								<%= link_to(image_tag("/assets/delete_recycle.png"), image_path(delete_path(album.id)), method: :delete, action: :destroy, data: {confirm: "Are you sure you want to destroy this beautiful music?"}) %>
+							</li>
+							<li class="column">
+								<%= link_to(image_tag("/assets/downvote_broken_heart.png"), image_path(downvote_path(album.id)), method: :post, action: :downvote) %>
+							</li>
+						</ul>
+					</div>
+					<br class="clear-card">
 				</div>
 			</article>
 		<% end %>
 	</div>
-	<%= button_to("New Album", media_new_path, action: :get) %>
-</span>
+	<div class="add-buttons">
+	<%= link_to(image_tag("/assets/add_album.png"), image_path(new_path(kind: 'album')), action: :new, method: :get) %>
+	</div>
+</div>

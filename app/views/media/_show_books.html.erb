@@ -1,34 +1,54 @@
-<span class="column">
-	<h1>Books!</h1>
+<div class="column">
+
 	<div class="row">
+		<header class="column">
+			<a href="/books"><h1>Books!</h1></a>
+		</header>
+
 		<% @books.each do |book| %>
+
 			<article class="column">
 	       <div class="card">
-					<p>Ranking: <%= book.votes.count %> </p>
-					<p><%= link_to(book.title, show_media_path(book.id)) %></p>
-
-					<p>By: <%=book.maker %></p>
-		<!-- <p>Description: <%= book.description %></p> -->
-<!-- voting buttons				 -->
-					<ul class="row small-up-1 medium-up-2">
-						<li class="column">
-							<%= button_to("Upvote", upvote_media_path(book.id)) %>
-						</li>
-						<li class="column">
-							<%= button_to("Downvote", downvote_media_path(book.id)) %>
-						</li>
-<!-- edit button -->
-						<li class="column">
-							<%= button_to("Edit", edit_media_path(book.id), method: :get, action: :edit) %>
-						</li>	
-<!-- delete buttons -->	
-						<li class="column">
-							<%= button_to("Delete", delete_media_path(book.id), data: {confirm: "Are you sure you want to destroy this beautiful music?"}) %>
-						</li>
-					</ul>
+	       	<div class="media-info">
+		       	<ul>
+							<li>
+								Rank: <%= book.votes.count %> 
+							</li>
+							<li>
+								<%= link_to(book.title, show_path(book.id)) %>
+							</li>
+							<li>
+							By: <%=book.maker %>
+							</li>
+				<!-- <li>Description: <%= book.description %></li> -->
+	<!-- voting buttons				 -->
+						</ul>
+						</div>
+					<br class="clear-card">
+					<div class="buttons">
+						<ul class="row small-up-2 medium-up-4">
+							<li class="column">
+								<%= link_to(image_tag("/assets/upvote_cupid_dart_heart.png"), image_path(upvote_path(book.id)), action: :upvote, method: :post) %>
+							</li>
+							<!-- edit button -->
+							<li class="column">
+								<%= link_to(image_tag("/assets/edit_pencil.png"), image_path(edit_path(book.id)), method: :get, action: :edit) %>
+							</li>	
+							<!-- delete buttons -->	
+							<li class="column">
+								<%= link_to(image_tag("/assets/delete_recycle.png"), image_path(delete_path(book.id)), method: :delete, action: :destroy, data: {confirm: "Are you sure you want to destroy this beautiful writing?"}) %>
+							</li>
+							<li class="column">
+								<%= link_to(image_tag("/assets/downvote_broken_heart.png"), image_path(downvote_path(book.id)), method: :post, action: :downvote) %>
+							</li>
+						</ul>
+					</div>
+					<br class="clear-card">
 				</div>
 			</article>
 		<% end %>
 	</div>
-	<%= button_to("New Book", media_new_path, action: :get) %>
-</span>
+	<div class="add-buttons">
+	<%= link_to(image_tag("/assets/add_book.png"), image_path(new_path(kind: 'book')), method: :get, action: :new) %>
+	</div>
+</div>

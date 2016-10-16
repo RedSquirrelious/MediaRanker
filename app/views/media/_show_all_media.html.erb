@@ -2,7 +2,7 @@
 
 	<% @media.each do |medium| %>
 	<article>
-		<p>Ranking: <%= medium.votes.count %> </p>
+		<p>Rank: <%= medium.votes.count %> </p>
 		<p>Title: <%= link_to(medium.title, show_media_path(medium.id)) %></p>
 		
 		<% if medium.kind == 'album' %>

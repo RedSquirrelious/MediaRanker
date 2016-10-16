@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   root to: 'media#index'
 
-  get 'media/index' => 'media#index', as: 'index_media'
+  get 'media/index' => 'media#index', as: 'index'
 
-  get 'media/show/:id' => 'media#show', as: 'show_media'
+  get 'media/show/:id' => 'media#show', as: 'show'
 
   get 'albums' => 'media#show_albums', as: 'albums'
 
@@ -12,19 +12,20 @@ Rails.application.routes.draw do
 
   get 'movies' => 'media#show_movies', as: 'movies'
 
-  get 'media/new' => 'media#new', as: 'media_new'
 
-  post 'media/create' => 'media#create', as: 'create_media'
+  get 'media/new' => 'media#new', as: 'new'
 
-  get 'media/:id/edit/' => 'media#edit', as: 'edit_media'
+  post 'media/create' => 'media#create', as: 'create'
 
-  put 'media/:id/update' => 'media#update', as: 'update_media'
+  get 'media/:id/edit/' => 'media#edit', as: 'edit'
 
-  delete 'media/:id/delete' => 'media#destroy', as: 'delete_media'
+  put 'media/:id/update' => 'media#update', as: 'update'
 
-  delete 'media/:id/downvote' => 'media#downvote', as: 'downvote_media'
+  delete 'media/:id/delete' => 'media#destroy', as: 'delete'
 
-  post 'media/:id/upvote' => 'media#upvote', as: 'upvote_media'
+  post 'media/:id/downvote' => 'media#downvote', as: 'downvote'
+
+  post 'media/:id/upvote' => 'media#upvote', as: 'upvote'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

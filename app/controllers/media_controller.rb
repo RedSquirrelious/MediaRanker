@@ -21,9 +21,10 @@ class MediaController < ApplicationController
   end
 
   def new
-    @my_medium = Medium.new
+    @my_medium = Medium.new(kind: params[:kind])
+    # @my_medium.kind = params[:kind]
     @post_method = :post
-    @post_path = create_media_path
+    @post_path = 'create'
   end
 
   def create
@@ -31,13 +32,15 @@ class MediaController < ApplicationController
     @my_medium = Medium.new
     @my_medium.title = params[:medium][:title]
     @my_medium.maker = params[:medium][:maker]
-    @my_medium.description = params[:description]
+    @my_medium.description = params[:medium][:description]
+    @my_medium.kind = params[:medium][:kind]
+    
     if @my_medium.save
-      redirect_to index_media_path
+      redirect_to index_path
     else
-      @error = "Did not save successfully. Try again. \nAll fields must be filled and address must be unique!"
+      @error = "Did not save successfully. Try again. \nAll fields must be filled!"
       @post_method = :post
-      @post_path = create_media_path
+      @post_path = create_path
       render :new
     end
   end
@@ -66,7 +69,7 @@ class MediaController < ApplicationController
   def edit
     @my_medium = Medium.find(params[:id])
     @post_method = :put
-    @post_path = update_media_path
+    @post_path = update_path
   end
 
   def update
@@ -83,11 +86,11 @@ class MediaController < ApplicationController
     @my_medium.description = params[:description]
 
     if @my_medium.save
-      redirect_to index_media_path
+      redirect_to index_path
     else
       @error = "Did not save successfully. Try again. \nAll fields must be filled and address must be unique!"
       @post_method = :put
-      @post_path = update_media_path
+      @post_path = update_path
       render :new
     end    
   end
@@ -96,14 +99,14 @@ class MediaController < ApplicationController
     @my_medium = Medium.find(params[:id])
     if @my_medium != nil
       @my_medium.destroy
-      redirect_to index_media_path
+      redirect_to index_path
     end    
   end
 
   def upvote
     @my_medium = Medium.find(params[:id])
     @my_medium.votes.create
-    redirect_to(index_media_path)
+    redirect_to(index_path)
   end
 
   def downvote
@@ -113,7 +116,7 @@ class MediaController < ApplicationController
     else
       return "It's already at '0'. You can't downvote it further."
     end
-    redirect_to(index_media_path)
+    redirect_to(index_path)
   end
 end
 
