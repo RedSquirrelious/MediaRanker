@@ -23,7 +23,7 @@ class MediaController < ApplicationController
   def new
     @my_medium = Medium.new
     @post_method = :post
-    @post_path = create_path
+    @post_path = media_create_path
   end
 
   def create
