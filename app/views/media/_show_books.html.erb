@@ -36,7 +36,7 @@
 							</li>	
 							<!-- delete buttons -->	
 							<li class="column">
-								<%= link_to(image_tag("/assets/delete_recycle.png"), image_path(delete_path(book.id)), data: {confirm: "Are you sure you want to destroy this beautiful writing?"}) %>
+								<%= link_to(image_tag("/assets/delete_recycle.png"), image_path(delete_path(book.id)), method: :delete, action: :destroy, data: {confirm: "Are you sure you want to destroy this beautiful writing?"}) %>
 							</li>
 							<li class="column">
 								<%= link_to(image_tag("/assets/downvote_broken_heart.png"), image_path(downvote_path(book.id)), method: :post, action: :downvote) %>
@@ -48,5 +48,7 @@
 			</article>
 		<% end %>
 	</div>
-	<%= button_to("New Book", media_new_path, method: :get, action: :new) %>
+	<div class="add-buttons">
+	<%= link_to(image_tag("/assets/add_book.png"), image_path(new_path(kind: 'book')), method: :get, action: :new) %>
+	</div>
 </div>
