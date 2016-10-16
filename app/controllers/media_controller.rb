@@ -81,18 +81,17 @@ class MediaController < ApplicationController
     #         :status => :not_found
     # end  
 
-    @my_medium.title = params[:title]
-    @my_medium.maker = params[:maker]
-    @my_medium.description = params[:description]
-
+    @my_medium.title = params[:medium][:title]
+    @my_medium.maker = params[:medium][:maker]
+    @my_medium.description = params[:medium][:description]
+  
     if @my_medium.save
       redirect_to index_path
     else
-      @error = "Did not save successfully. Try again. \nAll fields must be filled and address must be unique!"
-      @post_method = :put
-      @post_path = update_path
-      render :new
-    end    
+      @error = "Did not save successfully. Try again!"
+    end   
+    @post_method = :put
+    @post_path = update_path 
   end
 
   def destroy
