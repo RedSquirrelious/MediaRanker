@@ -31,6 +31,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+#API gems
+gem "active_model_serializers", github: "rails-api/active_model_serializers"
+
 
 group :production do
   gem 'pg'
