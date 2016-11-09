@@ -2,6 +2,16 @@ Rails.application.routes.draw do
 
   root to: 'media#index'
 
+  #api routes
+
+  namespace :api do
+  namespace :v1 do
+  	resources :media, only: [:index, :show, :create, :edit, :update, :destroy, :downvote, :upvote]
+  end
+	end
+
+
+
   get 'media/index' => 'media#index', as: 'index'
 
   get 'media/show/:id' => 'media#show', as: 'show'
