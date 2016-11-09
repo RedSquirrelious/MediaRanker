@@ -28,7 +28,7 @@ class MediaControllerTest < ActionController::TestCase
   end
 
   test "should be able to update a book" do
-    put :update, { id: media(:flowers_in_the_attic).id}
+    patch :update, { id: media(:flowers_in_the_attic).id}
     assert_response :success
   end
 
